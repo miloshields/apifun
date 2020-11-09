@@ -1,4 +1,4 @@
-var url = 'https://calendarific.com/api/v2/holidays?&api_key=fccfcbba1adc682348f7f7a17ec7c75915bab7ff&country=US&year=2020';
+var url = 'https://calendarific.com/api/v2/holidays?&api_key=fccfcbba1adc682348f7f7a17ec7c75915bab7ff&country=US&year=2020&month=11';
 
 //retrieve our setlist file, do initital printing when it arrives
 function loadFile(){
