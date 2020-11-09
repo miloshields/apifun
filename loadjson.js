@@ -11,21 +11,31 @@ var table;
 function generateTableHead(table, data) {
   let thead = table.createTHead();
   let row = thead.insertRow();
+  var i = 0;
   for (let key of data) {
     let th = document.createElement("th");
     let text = document.createTextNode(key);
     th.appendChild(text);
     row.appendChild(th);
+    i++;
+    if(i >1){
+        break;
+    }
   }
 }
 function generateTable(table, data, rows) {
   var i = 0;
   for (let element of data) {
     let row = table.insertRow();
+    var j = 0;
     for (key in element) {
       let cell = row.insertCell();
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
+      j++;
+      if(j >1){
+          break;
+      }
     }
     i++;
     if(i > rows){
