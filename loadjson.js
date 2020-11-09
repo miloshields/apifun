@@ -59,7 +59,7 @@ function loadFile(){
             
             holidaysObj = JSON.parse(jsonString);
             table = document.querySelector("table");
-            data = Object.keys(holidaysObj["response"][0]);
+            data = Object.keys(holidaysObj["response"]["holidays"][0]);
             
             generateTableHead(table,data);
             generateTable(table,holidaysObj["response"]);
