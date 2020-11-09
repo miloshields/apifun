@@ -1,3 +1,39 @@
+var jsonString;
+var holidaysObj;
+var data;
+var table;
+
+
+/*building our table up - THIS CODE IS FROM
+* https://www.valentinog.com/blog/html-table/
+* AND IS NOT MINE, WITH THE EXCEPTION OF THE FILTER MECHANISM
+*/
+function generateTableHead(table, data) {
+  let thead = table.createTHead();
+  let row = thead.insertRow();
+  for (let key of data) {
+    let th = document.createElement("th");
+    let text = document.createTextNode(key);
+    th.appendChild(text);
+    row.appendChild(th);
+  }
+}
+function generateTable(table, data, rows) {
+  var i = 0;
+  for (let element of data) {
+    let row = table.insertRow();
+    for (key in element) {
+      let cell = row.insertCell();
+      let text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+    i++;
+    if(i > rows){
+        break;
+    }
+  }
+}
+
 var url = 'https://calendarific.com/api/v2/holidays?&api_key=fccfcbba1adc682348f7f7a17ec7c75915bab7ff&country=US&year=2020&month=11';
 
 //retrieve our setlist file, do initital printing when it arrives
@@ -20,16 +56,14 @@ function loadFile(){
             //handle data accordingly if successfully loaded
             jsonString = request.responseText;
             console.log("json string is" + jsonString);
-            // /*call display function on our JSON setlist (raw format)*/
-            // displaySerialize(jsonString);
-            //
-            // /*get object from our jsonString*/
-            // setListObj = JSON.parse(jsonString);
-            //
-            // table = document.querySelector("table");
-            // data = Object.keys(setListObj[0]);
-            // generateTableHead(table, data);
-            // generateTable(table,setListObj,"");
+            
+            holidaysObj = JSON.parse(jsonString);
+            table = document.querySelector("table");
+            data = Object.keys(holidaysObj["response"][0]);
+            
+            generateTableHead(table,data);
+            generateTable(table,holidaysObj["response"]);
+           
         }
         else if(request.readyState == 4 && request.status != 200){
             alert("request was not returned successfully");
