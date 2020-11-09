@@ -62,7 +62,7 @@ function loadFile(){
             data = Object.keys(holidaysObj["response"]["holidays"][0]);
             
             generateTableHead(table,data);
-            generateTable(table,holidaysObj["response"]);
+            generateTable(table,holidaysObj["response"]["holidays"]);
            
         }
         else if(request.readyState == 4 && request.status != 200){
