@@ -1,6 +1,4 @@
-var url = 'http://newsapi.org/v2/top-headlines?' +
-          'country=us&' +
-          'apiKey=7fa64666d0d04dcf93a03cd26601ffb7';
+var url = 'https://calendarific.com/api/v2/holidays?&api_key=fccfcbba1adc682348f7f7a17ec7c75915bab7ff&country=US&year=2020';
 
 //retrieve our setlist file, do initital printing when it arrives
 function loadFile(){
